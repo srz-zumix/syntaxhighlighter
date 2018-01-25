@@ -12,24 +12,25 @@ function render(filepath, context) {
 }
 
 function getVersion(rootPath) {
-  const fs = require('fs');
+  const Promise = require('bluebird');
+  const fs = Promise.promisifyAll(require('fs'));
 
-  return fs.promise.readFile(`${rootPath}/package.json`)
+  return fs.readFileAsync(`${rootPath}/package.json`)
     .then(JSON.parse)
     .then(({version}) => version);
 }
 
 function getAvailableBrushes(rootPath) {
-  const glob = require('glob');
+  const glob = require('glob-promise');
 
   return glob.promise(`${rootPath}/repos/brush-*`)
     .then(brushes => brushes.map(path => path.match(/brush-(.*)$/)[1]));
 }
 
 function getBuildBrushes(rootPath, argv, availableBrushes) {
-  const fs = require('fs');
+  const Promise = require('bluebird');
+  const fs = Promise.promisifyAll(require('fs'));
   const path = require('path');
-  const Promise = require('songbird');
 
   if (!argv.brushes) {
     return Promise.resolve([]);
@@ -49,7 +50,8 @@ function getBuildBrushes(rootPath, argv, availableBrushes) {
     let requirePath = path.resolve(process.cwd(), name);
     let sample;
 
-    return fs.promise.stat(requirePath)
+  
+    return fs.statAsync(requirePath)
       // handle brushes by full file path
       .then(
         () => fs.promise.readFile(`${path.dirname(requirePath)}/sample.txt`)
@@ -66,7 +68,7 @@ function getBuildBrushes(rootPath, argv, availableBrushes) {
 
         requirePath = `brush-${name}`;
 
-        return fs.promise.readFile(`${rootPath}/repos/brush-${name}/sample.txt`, 'utf8')
+        return fs.readFileAsync(`${rootPath}/repos/brush-${name}/sample.txt`, 'utf8')
           .then(content => sample = content)
           .catch(() => null);
       })
@@ -119,11 +121,11 @@ function buildJavaScript(rootPath, outputPath, buildBrushes, version, compat) {
     ]
   };
 
-  return fs.promise.rename(corePath, backupCorePath)
+  return fs.renameAsync(corePath, backupCorePath)
     .then(() => fs.promise.writeFile(corePath, core))
     .then(() => webpack.promise(config))
     .then(stats =>
-      fs.promise.unlink(corePath)
+      fs.unlinkAsync(corePath)
         .then(() => fs.promise.rename(backupCorePath, corePath))
         .then(() => stats)
     );

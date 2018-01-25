@@ -1,9 +1,9 @@
 export default function (gulp, rootPath) {
-  const fs = require('fs');
-  const rimraf = require('rimraf');
+  const Promise = require('bluebird');
+  const fs = Promise.promisifyAll(require('fs'));
+  const rmfr = require('rmfr');
   const mkdirp = require('mkdirp');
   const R = require('ramda');
-  const Promise = require('songbird');
   const childProcess = require('child_process');
 
   const REPOS_CACHE = `${rootPath}/.projects-cache.json`;
@@ -31,15 +31,15 @@ export default function (gulp, rootPath) {
   const exec = (cmd, opts) =>
     Promise.resolve(cmd)
       .then(console.log)
-      .then(() => childProcess.exec.promise(cmd, opts))
+      .then(() => childProcess.exec(cmd, opts))
       .catch(err => { throw new Error(err.message + '\n\n' + cmd) });
 
   const git = (cmd, cwd) => exec(`git ${cmd}`, {cwd});
-  const loadReposFromCache = () => fs.readFile.promise(REPOS_CACHE, 'utf8').then(JSON.parse);
+  const loadReposFromCache = () => fs.readFileAsync(REPOS_CACHE, 'utf8').then(JSON.parse);
   const loadRepos = () => loadReposFromCache().error(loadReposFromGitHub).then(R.map(R.pick(['clone_url', 'name'])));
   const cloneRepo = repo => git(`clone ${repo.clone_url}`, REPOS_DIR);
   const pathToRepo = repo => `${REPOS_DIR}/${repo.name}`;
-  const ln = (source, dest) => rimraf.promise(dest).finally(() => exec(`ln -s ${source} ${dest} || true`));
+  const ln = (source, dest) => rmfr(dest).then(() => exec(`ln -s ${source} ${dest} || true`));
   const linkNodeModulesIntoRepos = repo => ln(`${rootPath}/node_modules`, `${pathToRepo(repo)}/node_modules`);
   const linkReposIntoNodeModules = repo => ln(pathToRepo(repo), `${rootPath}/node_modules/${repo.name}`);
   const unlinkReposFromNodeModules = repo => fs.promise.unlink(`${rootPath}/node_modules/${repo.name}`);
