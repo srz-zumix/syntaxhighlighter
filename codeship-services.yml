@@ -1,0 +1,4 @@
+syntaxhighlighter:
+  build:
+    image: srz-zumix/syntaxhighlighter
+    dockerfile: Dockerfile
