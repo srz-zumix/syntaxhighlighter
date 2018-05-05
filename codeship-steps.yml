@@ -1,4 +1,9 @@
 - name: ci
   tag: master
   service: syntaxhighlighter
-  command: ls
+  steps:
+    - command: |
+      ls
+      npm install && npm install -g gulp
+      gulp setup-project
+      gulp build --brushes=all --theme=default --output=./docs
