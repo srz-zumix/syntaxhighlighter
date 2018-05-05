@@ -3,6 +3,6 @@
   service: syntaxhighlighter
   type: serial
   steps:
-    command: npm install && npm install -g gulp
-    commnad: gulp setup-project
-    command: gulp build --brushes=all --theme=default --output=./docs
+    - command: npm install && npm install -g gulp
+#    commnad: gulp setup-project
+#    command: gulp build --brushes=all --theme=default --output=./docs
