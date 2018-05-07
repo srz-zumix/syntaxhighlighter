@@ -10,5 +10,5 @@
   service: push
   type: serial
   steps:
-    - command: "curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/deployments/git_push.sh | bash -s"
+    - command: 'curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/deployments/git_push.sh | bash -s'
 
