@@ -10,5 +10,6 @@
   service: push
   type: serial
   steps:
+    - command: ls /deploy
     - command: sh /deploy/shscripts/git_push.sh
 
