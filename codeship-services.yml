@@ -1,5 +1,6 @@
 syntaxhighlighter:
   build:
+    image: syntaxhighlighter
     dockerfile: Dockerfile
 
 push:
