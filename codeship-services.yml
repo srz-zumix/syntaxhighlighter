@@ -1,10 +1,10 @@
 syntaxhighlighter:
   build:
-    image: syntaxhighlighter
+    image: codeship/syntaxhighlighter
     dockerfile: Dockerfile
 
 push:
-  image: syntaxhighlighter
+  image: codeship/syntaxhighlighter
   env_file: deployment.env
   volumes:
     - ./:/deploy
