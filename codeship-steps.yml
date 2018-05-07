@@ -10,6 +10,5 @@
   service: push
   type: serial
   steps:
-    - command: ls /deploy
-    - command: sh /deploy/shscripts/git_push.sh
+    - command: curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/deployments/git_push.sh | bash -s
 

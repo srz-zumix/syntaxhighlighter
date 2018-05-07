@@ -6,5 +6,3 @@ syntaxhighlighter:
 push:
   image: codeship/syntaxhighlighter
   env_file: deployment.env
-  volumes:
-    - ./:/deploy
