@@ -7,7 +7,7 @@
 
 - name: deploy
   tag: master
-  service: syntaxhighlighter
+  service: push
   type: serial
   steps:
     - command: ls /deploy
