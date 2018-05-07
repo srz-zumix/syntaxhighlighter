@@ -14,3 +14,5 @@ RUN npm install
 
 # After installing dependencies copy the whole codebase into the Container to not invalidate the cache before
 COPY . ./
+
+RUN sh build.sh

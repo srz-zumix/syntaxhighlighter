@@ -3,4 +3,12 @@
   service: syntaxhighlighter
   type: serial
   steps:
-    - command: sh build.sh
+    - command: ls
+
+- name: deploy
+  tag: master
+  service: push
+  type: serial
+  steps:
+    - command: sh /deploy/shscripts/git_push.sh
+

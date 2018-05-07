@@ -1,3 +1,9 @@
 syntaxhighlighter:
   build:
     dockerfile: Dockerfile
+
+push:
+  image: syntaxhighlighter
+  env_file: deployment.env
+  volumes:
+    - ./:/deploy
