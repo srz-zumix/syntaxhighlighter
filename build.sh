@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 npm install
 npm install -g gulp
 gulp setup-project
