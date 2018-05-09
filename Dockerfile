@@ -16,3 +16,5 @@ RUN npm install
 COPY . ./
 
 RUN sh build.sh
+
+COPY ssh_config ~/.ssh/config
