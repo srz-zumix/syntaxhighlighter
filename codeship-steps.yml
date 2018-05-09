@@ -10,5 +10,6 @@
   service: push
   type: serial
   steps:
+    - command: ls ~/.ssh
     - command: sh -c "curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/deployments/git_push.sh | bash -s"
 
