@@ -2,6 +2,7 @@ syntaxhighlighter:
   build:
     image: codeship/syntaxhighlighter
     dockerfile: Dockerfile
+  cached: true
 
 push:
   image: codeship/syntaxhighlighter
