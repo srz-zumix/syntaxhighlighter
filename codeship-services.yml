@@ -10,4 +10,4 @@ push:
   encrypted_env_file: codeship.env.encrypted
   volumes:
   # mapping to `.ssh` directory ensures that `id_rsa` file persists to subsequent steps
-    - ./.ssh:${HOME}/.ssh
+    - ./.ssh:$HOME/.ssh
