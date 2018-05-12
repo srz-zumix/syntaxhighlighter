@@ -1,6 +1,8 @@
 - name: ci
   service: syntaxhighlighter
-  command: ls
+  type: serial
+  steps:
+    - command: ls
 
 - name: store key to id_rsa file and chmod file to r/w for user
   service: push
