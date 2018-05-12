@@ -2,12 +2,12 @@ syntaxhighlighter:
   build:
     image: codeship/syntaxhighlighter
     dockerfile: Dockerfile
+  volumes:
+  # mapping to `.ssh` directory ensures that `id_rsa` file persists to subsequent steps
+    - ./.ssh:${HOME}/.ssh
   cached: true
 
 push:
   image: codeship/syntaxhighlighter
   env_file: deployment.env
   encrypted_env_file: codeship.env.encrypted
-  volumes:
-  # mapping to `.ssh` directory ensures that `id_rsa` file persists to subsequent steps
-    - ./.ssh:${HOME}/.ssh
