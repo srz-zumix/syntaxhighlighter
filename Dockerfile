@@ -17,4 +17,11 @@ COPY . ./
 
 RUN sh build.sh
 
-COPY ssh_config ~/.ssh/config
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends\
+    ca-certificates  \
+    ssh
+
+RUN mkdir -p ${HOME}/.ssh \
+  # key scan ensures that you will not receive interactive prompt to accept host
+  && ssh-keyscan -H github.com >> ${HOME}/.ssh/known_hosts

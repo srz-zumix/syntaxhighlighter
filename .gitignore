@@ -5,4 +5,8 @@ bower_components
 .projects-cache.json
 npm-debug.log
 package-lock.json
-
+codeship.aes
+codeship_deploy_key
+codeship_deploy_key.pub
+codeship.env
+.ssh
