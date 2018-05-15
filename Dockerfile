@@ -1,4 +1,5 @@
-FROM srzzumix/syntaxhighlighter:latest
+FROM srzzumix/syntaxhighlighter
+
 ## We're starting from the Node 8 image
 #FROM node:8
 #
