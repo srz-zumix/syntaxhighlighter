@@ -1,27 +1,27 @@
 language: node_js
 sudo: false
 node_js:
-  - "8"
+  - '8'
 
 before_script:
   - npm install -g gulp-cli
   - npm install
-  
+
 script:
   - sh ./build.sh
-
-#deploy:
-#  provider: pages
-#  local-dir: docs
-#  skip-cleanup: true
-#  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-#  keep-history: true
-#  on:
-#    branch: master
 
 notifications:
   email: false
 
-#env:
-#  global:
-#    - secure: t6d7HusMxzdZCXV5tGWQn0MA7aodeuK6bbKASqUuOyKUe8I+w3E3E+GKL3CyE32pGDuPGxw1NraOvVJ8uuBmJjwumyAHssR0BFGogPnbhQucl9N3eMz9BHU5j5bw/bGkmI2y+9ZsTb+9P7XtBrwC6/AbdcF/Wh0y7y32RLxda4836OvxOuuZDl+2OgPtkqyg+uKVh+6uRY+arUHOBUEjzjBBAN5/eoTqE0/HVu4YEgiq94ke0c2w2Sz+sK1yXUGrOIz5nTcMMSAwJdHaQpnBKs/5EzJCcHx5guH3Wn+XKS3LOqIxioz6wKPnkqqhFHiv83fGy9+lv67mUHcXfMDab5rm+jRJUHgZPX9sd4iAoz7ZQ3jxMW3/PWP7VJsv3SrrDjFvBH8tRzkqtVIFTmS4tGDZ2VzeYhKom4dA3CH/KCxprZJ+nCQ2TizMuNAezR1+GcZGIDc+AGILUxfPK82Z2CZtmhoOBEp8C7JN6bPNxfYYhU5rJo8dI+1HinX3JRdfW2zBlixxuIrfn2RWhuRzT4mZf7tP8EZV33wRa7W/eEKvUUfMGAzk8gEVhLKfGaGZU7IfhrwdmRgRsKX0Y53wfEjqt8tsWW3FFHfuLjO75lEJY381VJREvC76FCOa2AT4B6A6dzz/5376K/08GChfBcN1vHAxj5FxhJ1dwt4iTZE=
+deploy:
+  provider: pages
+  local-dir: docs
+  skip-cleanup: true
+  github-token: "$GITHUB_TOKEN"
+  keep-history: true
+  on:
+    branch: master
+
+env:
+  global:
+    secure: tbvP6BgRFAhw5id/i8I5Q6tL7dhkmd4tSzwgfOhO5qt16QpzvkES95rma+DOjjVKXbd8Zbpxz5Eax7nuEtH9BxXby0+IxtkeKfZ0nsNr249nFnDLqNVved+iRY6LYxZM2YwlwYOwnsAUbJ6yzk46zjgVVlgyerS7+of/MFzlHlWOwnVF4mJg1gQL9QPodJ1LEsfeUlxjDWuSZayR8KP3/kziMbAo+/F9sL3FEdWgSYU7Ew98KRk0W89sHISKGCJqPljU/VIFYnR6iyzc+QC808MzvqX/iiUKkJJ7N90IZUaC9XqAyArTYun9NKKMR9PKwGzpqUH4Dj57KILmwxaLWfBbNv7T380p/5P+izu1UNY3aaDpaJrtaMK0UYLgjyvev37OTc0VY5mFqUZk7OCLVUhisU34sKkj2oQ6CPvB+dKkvydscjhjVuPYFYb96VhNzena8UYezo1aW1cUNTKRAPcDbQFUO5dr+KFJ9dud+bI0gSIpvbdLPyqdnItWNmXu++eZ6JIpE3hxpZEmkxZOuR6B30aXM3EQiBg+YMQqitAgRKOUsejAWY04GA27MwqfD0JO4bH4gZGFeVUfVECrbjr5L7fuD2qHMAr1ahUc4TLE9cYPCMlXRNzIyL4GfjZtNkkKFDUb9Wu/rpuS8M4kDIDqIejhtOf9EKrNBRVmf1s=
