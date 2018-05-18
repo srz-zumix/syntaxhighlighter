@@ -1,5 +1,26 @@
 language: node_js
 sudo: false
 node_js:
-  - "4"
-  - "5"
+  - "8"
+
+before_script:
+  - npm install -g gulp-cli
+  - npm install
+  
+script:
+  - sh ./build.sh
+
+#deploy:
+#  provider: pages
+#  skip-cleanup: true
+#  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+#  keep-history: true
+#  on:
+#    branch: master
+
+notifications:
+  email: false
+
+#env:
+#  global:
+#    - secure: t6d7HusMxzdZCXV5tGWQn0MA7aodeuK6bbKASqUuOyKUe8I+w3E3E+GKL3CyE32pGDuPGxw1NraOvVJ8uuBmJjwumyAHssR0BFGogPnbhQucl9N3eMz9BHU5j5bw/bGkmI2y+9ZsTb+9P7XtBrwC6/AbdcF/Wh0y7y32RLxda4836OvxOuuZDl+2OgPtkqyg+uKVh+6uRY+arUHOBUEjzjBBAN5/eoTqE0/HVu4YEgiq94ke0c2w2Sz+sK1yXUGrOIz5nTcMMSAwJdHaQpnBKs/5EzJCcHx5guH3Wn+XKS3LOqIxioz6wKPnkqqhFHiv83fGy9+lv67mUHcXfMDab5rm+jRJUHgZPX9sd4iAoz7ZQ3jxMW3/PWP7VJsv3SrrDjFvBH8tRzkqtVIFTmS4tGDZ2VzeYhKom4dA3CH/KCxprZJ+nCQ2TizMuNAezR1+GcZGIDc+AGILUxfPK82Z2CZtmhoOBEp8C7JN6bPNxfYYhU5rJo8dI+1HinX3JRdfW2zBlixxuIrfn2RWhuRzT4mZf7tP8EZV33wRa7W/eEKvUUfMGAzk8gEVhLKfGaGZU7IfhrwdmRgRsKX0Y53wfEjqt8tsWW3FFHfuLjO75lEJY381VJREvC76FCOa2AT4B6A6dzz/5376K/08GChfBcN1vHAxj5FxhJ1dwt4iTZE=
