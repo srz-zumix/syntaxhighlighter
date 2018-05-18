@@ -9,6 +9,7 @@ before_script:
 
 script:
   - sh ./build.sh
+  - ls ./docs
 
 notifications:
   email: false
